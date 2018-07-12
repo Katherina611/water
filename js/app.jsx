@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             input6:"",
             input7:"",
             input8:"",
+            displayHead:'block',
+            displayCalc:'none'
         };
         handleClcik1 =(e)=>{
             this.setState({
@@ -63,7 +65,69 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             console.log(e.target.value);
         }
+        handleClick9 = (e)=>{
+            e.preventDefault();
+            this.setState({
+                displayHead:'block',
+                displayCalc:this.state.displayCalc==='block'?'none':'block'
+            })
+
+        }
         render() {
+            let firstAbs1 = Number(this.state.input1),
+                secondAbs1 = Number(this.state.input2),
+                fourthAbs1 = Number(this.state.input3),
+                fifthAbs1 = Number(this.state.input4),
+                firstAbs2 = Number(this.state.input5),
+                secondAbs2 = Number(this.state.input6),
+                fourthAbs2 = Number(this.state.input7),
+                fifthAbs2 = Number(this.state.input8);
+
+            //obliczanie średnich
+            let firstAbs = (firstAbs1 + firstAbs2)/2;
+            let secondAbs = (secondAbs1 + secondAbs2)/2;
+            let fourthAbs = (fourthAbs1 + fourthAbs2)/2;
+            let fifthAbs = (fifthAbs1 + fifthAbs2)/2;
+
+            let chlorWolny = firstAbs.toFixed(2);
+            let chlorOgolny = secondAbs.toFixed(2);
+            let chlorZwiazany = (secondAbs - firstAbs).toFixed(2);
+            let mono = (fourthAbs - firstAbs).toFixed(2);
+            let di = (secondAbs - (2*(fifthAbs)) + fourthAbs).toFixed(2);
+            let tri = (2*(fifthAbs - fourthAbs)).toFixed(2);
+
+            let resultDiv;
+            resultDiv =
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Chlor wolny </td>
+                                <td>{chlorWolny} mg/dm<sup>3</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Chlor ogólny </td>
+                                <td>{chlorOgolny} mg/dm<sup>3</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Chlor związany </td>
+                                <td>{chlorZwiazany} mg/dm<sup>3</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Monochloramina </td>
+                                <td>{mono} mg/dm<sup>3</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Dichloramina </td>
+                                <td>{di} mg/dm<sup>3</sup></td>
+                            </tr>
+                            <tr>
+                                <td>Trichloramina </td>
+                                <td>{tri} mg/dm<sup>3</sup></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    ;
+
             return (
                 <form>
                     <fieldset>Obliczenia chloramin<br></br>
@@ -84,9 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="number" id="c5-2" value={this.state.input8} placeholder="Podaj absorbancje 4'" onChange={this.handleClcik8}/>
                         </label><br></br>
                         <label>
-                            <input type="submit" id="result" value="Oblicz"/>
+                            <input type="submit" id="result" value="Oblicz" onClick={this.handleClcik9}/>
                         </label>
-                        <div class="resultDiv"></div>
+                        {resultDiv}
                     </fieldset>
                 </form>
             )

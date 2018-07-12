@@ -14166,7 +14166,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 input5: "",
                 input6: "",
                 input7: "",
-                input8: ""
+                input8: "",
+                displayHead: 'block',
+                displayCalc: 'none'
             }, _this.handleClcik1 = function (e) {
                 _this.setState({
                     input1: e.target.value
@@ -14200,12 +14202,170 @@ document.addEventListener('DOMContentLoaded', function () {
                     input8: e.target.value
                 });
                 console.log(e.target.value);
+            }, _this.handleClick9 = function (e) {
+                e.preventDefault();
+                _this.setState({
+                    displayHead: 'block',
+                    displayCalc: _this.state.displayCalc === 'block' ? 'none' : 'block'
+                });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(Calc, [{
             key: 'render',
             value: function render() {
+                var firstAbs1 = Number(this.state.input1),
+                    secondAbs1 = Number(this.state.input2),
+                    fourthAbs1 = Number(this.state.input3),
+                    fifthAbs1 = Number(this.state.input4),
+                    firstAbs2 = Number(this.state.input5),
+                    secondAbs2 = Number(this.state.input6),
+                    fourthAbs2 = Number(this.state.input7),
+                    fifthAbs2 = Number(this.state.input8);
+
+                //obliczanie średnich
+                var firstAbs = (firstAbs1 + firstAbs2) / 2;
+                var secondAbs = (secondAbs1 + secondAbs2) / 2;
+                var fourthAbs = (fourthAbs1 + fourthAbs2) / 2;
+                var fifthAbs = (fifthAbs1 + fifthAbs2) / 2;
+
+                var chlorWolny = firstAbs.toFixed(2);
+                var chlorOgolny = secondAbs.toFixed(2);
+                var chlorZwiazany = (secondAbs - firstAbs).toFixed(2);
+                var mono = (fourthAbs - firstAbs).toFixed(2);
+                var di = (secondAbs - 2 * fifthAbs + fourthAbs).toFixed(2);
+                var tri = (2 * (fifthAbs - fourthAbs)).toFixed(2);
+
+                var resultDiv = void 0;
+                resultDiv = _react2.default.createElement(
+                    'table',
+                    null,
+                    _react2.default.createElement(
+                        'tbody',
+                        null,
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Chlor wolny '
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                chlorWolny,
+                                ' mg/dm',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '3'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Chlor og\xF3lny '
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                chlorOgolny,
+                                ' mg/dm',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '3'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Chlor zwi\u0105zany '
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                chlorZwiazany,
+                                ' mg/dm',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '3'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Monochloramina '
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                mono,
+                                ' mg/dm',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '3'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Dichloramina '
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                di,
+                                ' mg/dm',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '3'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                'Trichloramina '
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                tri,
+                                ' mg/dm',
+                                _react2.default.createElement(
+                                    'sup',
+                                    null,
+                                    '3'
+                                )
+                            )
+                        )
+                    )
+                );
+
                 return _react2.default.createElement(
                     'form',
                     null,
@@ -14245,9 +14405,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         _react2.default.createElement(
                             'label',
                             null,
-                            _react2.default.createElement('input', { type: 'submit', id: 'result', value: 'Oblicz' })
+                            _react2.default.createElement('input', { type: 'submit', id: 'result', value: 'Oblicz', onClick: this.handleClcik9 })
                         ),
-                        _react2.default.createElement('div', { 'class': 'resultDiv' })
+                        resultDiv
                     )
                 );
             }
