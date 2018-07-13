@@ -23,13 +23,20 @@ input[type="submit"]{
   background-color: white;
 }
 
-tr, td{
-  border: 1px solid black;
-  width:100px;
-  text-align: center;
-  font-size:18px;
-}
 table{
   margin: 0 auto;
   margin-top: 30px;
+  tbody{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  flex-grow: 1;
+  td,td{
+    text-align: center;
+    font-size:18px;
+    width:170px;
+    border: 1px solid black;
+  }
+  }
 }

@@ -14167,8 +14167,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 input6: "",
                 input7: "",
                 input8: "",
-                displayHead: 'block',
-                displayCalc: 'none'
+                displayCalc: 'block'
             }, _this.handleClcik1 = function (e) {
                 _this.setState({
                     input1: e.target.value
@@ -14205,8 +14204,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, _this.handleClick9 = function (e) {
                 e.preventDefault();
                 _this.setState({
-                    displayHead: 'block',
-                    displayCalc: _this.state.displayCalc === 'block' ? 'none' : 'block'
+                    displayCalc: _this.state.displayCalc === 'none' ? 'block' : 'none'
                 });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
@@ -14239,7 +14237,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var resultDiv = void 0;
                 resultDiv = _react2.default.createElement(
                     'table',
-                    null,
+                    { style: { display: this.state.displayCalc } },
                     _react2.default.createElement(
                         'tbody',
                         null,
@@ -25527,7 +25525,7 @@ exports = module.exports = __webpack_require__(220)(false);
 
 
 // module
-exports.push([module.i, "form {\n  width: 50%;\n  margin: 0 auto;\n  text-align: center;\n  background-image: url(" + escape(__webpack_require__(221)) + ");\n  background-size: cover; }\n\nfieldset {\n  font-size: 30px; }\n\ninput[type=\"submit\"] {\n  background-color: rgba(218, 240, 254, 0.3);\n  color: black;\n  border-radius: 10%;\n  width: 100px;\n  height: 50px;\n  margin-top: 15px; }\n\n#firstVar, #secondVar {\n  width: 300px;\n  font-size: 14px;\n  border-radius: 5%;\n  background-color: white; }\n\ntr, td {\n  border: 1px solid black;\n  width: 100px;\n  text-align: center;\n  font-size: 18px; }\n\ntable {\n  margin: 0 auto;\n  margin-top: 30px; }\n", ""]);
+exports.push([module.i, "form {\n  width: 50%;\n  margin: 0 auto;\n  text-align: center;\n  background-image: url(" + escape(__webpack_require__(221)) + ");\n  background-size: cover; }\n\nfieldset {\n  font-size: 30px; }\n\ninput[type=\"submit\"] {\n  background-color: rgba(218, 240, 254, 0.3);\n  color: black;\n  border-radius: 10%;\n  width: 100px;\n  height: 50px;\n  margin-top: 15px; }\n\n#firstVar, #secondVar {\n  width: 300px;\n  font-size: 14px;\n  border-radius: 5%;\n  background-color: white; }\n\ntable {\n  margin: 0 auto;\n  margin-top: 30px; }\n  table tbody {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    flex-grow: 1; }\n    table tbody td, table tbody td {\n      text-align: center;\n      font-size: 18px;\n      width: 170px;\n      border: 1px solid black; }\n", ""]);
 
 // exports
 

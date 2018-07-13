@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input6:"",
             input7:"",
             input8:"",
-            displayHead:'block',
-            displayCalc:'none'
+            displayCalc:'block'
         };
         handleClcik1 =(e)=>{
             this.setState({
@@ -68,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         handleClick9 = (e)=>{
             e.preventDefault();
             this.setState({
-                displayHead:'block',
-                displayCalc:this.state.displayCalc==='block'?'none':'block'
+                displayCalc:this.state.displayCalc==='none'?'block':'none'
             })
 
         }
@@ -98,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let resultDiv;
             resultDiv =
-                    <table>
+                    <table style={{display:this.state.displayCalc}}>
                         <tbody>
                             <tr>
                                 <td>Chlor wolny </td>
