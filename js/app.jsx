@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             input6:"",
             input7:"",
             input8:"",
-            displayCalc:'block'
+            input9:"Oblicz",
+            displayCalc:'none'
         };
         handleClcik1 =(e)=>{
             this.setState({
@@ -62,15 +63,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.setState({
                 input8:e.target.value,
             })
-            console.log(e.target.value);
+        
         }
         handleClick9 = (e)=>{
             e.preventDefault();
             this.setState({
-                displayCalc:this.state.displayCalc==='none'?'block':'none'
+                displayCalc:this.state.displayCalc==='none'?'block':'none',
+                input9:this.state.input9 === 'Oblicz'?"Reset":"Oblicz"
             })
 
         }
+        
         render() {
             let firstAbs1 = Number(this.state.input1),
                 secondAbs1 = Number(this.state.input2),
@@ -146,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="number" id="c5-2" value={this.state.input8} placeholder="Podaj absorbancje 4'" onChange={this.handleClcik8}/>
                         </label><br></br>
                         <label>
-                            <input type="submit" id="result" value="Oblicz" onClick={this.handleClcik9}/>
+                            <input type="submit" id="result" value={this.state.input9} onClick={this.handleClick9}/>
                         </label>
                         {resultDiv}
                     </fieldset>

@@ -14167,7 +14167,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 input6: "",
                 input7: "",
                 input8: "",
-                displayCalc: 'block'
+                input9: "Oblicz",
+                displayCalc: 'none'
             }, _this.handleClcik1 = function (e) {
                 _this.setState({
                     input1: e.target.value
@@ -14200,11 +14201,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 _this.setState({
                     input8: e.target.value
                 });
-                console.log(e.target.value);
             }, _this.handleClick9 = function (e) {
                 e.preventDefault();
                 _this.setState({
-                    displayCalc: _this.state.displayCalc === 'none' ? 'block' : 'none'
+                    displayCalc: _this.state.displayCalc === 'none' ? 'block' : 'none',
+                    input9: _this.state.input9 === 'Oblicz' ? "Reset" : "Oblicz"
                 });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
@@ -14403,7 +14404,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         _react2.default.createElement(
                             'label',
                             null,
-                            _react2.default.createElement('input', { type: 'submit', id: 'result', value: 'Oblicz', onClick: this.handleClcik9 })
+                            _react2.default.createElement('input', { type: 'submit', id: 'result', value: this.state.input9, onClick: this.handleClick9 })
                         ),
                         resultDiv
                     )
